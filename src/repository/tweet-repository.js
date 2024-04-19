@@ -30,16 +30,6 @@ class TweetRepository {
     }
   }
 
-  async update(tweetId, data) {
-    try {
-      const tweet = await Tweet.findByIdAndUpdate(tweetId, data, { new: true });// The new: true option in the method call specifies that you want 
-      //Mongoose to return the modified document rather than the original document.
-      return tweet;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   async destroy(id) {
     try {
       const tweet = await Tweet.findByIdAndRemove(id);
