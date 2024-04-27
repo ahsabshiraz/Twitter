@@ -22,7 +22,12 @@ app.listen(3000, async () => {
   // const userRepo = new UserRepository();
   // const tweetRepo = new TweetRepository();
   // const tweets = await tweetRepo.getAll(0, 10);
-  // const users = await userRepo.getAll();
+  // const users = await userRepo.create({
+  //   email:'Sam@gmail.com',
+  //   password:'123456',
+  //   name:'Sam'
+  // });
+
   // const likeService = new LikeService();
   // await likeService.toggleLike(tweets[0].id, "Tweet", users[0].id); // this tweet  got liked by the user
 });

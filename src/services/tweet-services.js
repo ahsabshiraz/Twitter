@@ -9,7 +9,7 @@ class TweetService {
     const content = data.content;
     const tags = content
       .match(/#[a-zA-Z0-9_]+/g)
-      .map((tag) => tag.substring(1).toLowerCase()) // this regex extract hashtags
+      .map((tag) => tag.substring(1).toLowerCase()); // this regex extract hashtags
     const tweet = await this.tweetRepository.create(data);
     let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
     let titleOfPresentTags = alreadyPresentTags.map((tags) => tags.title);
@@ -22,6 +22,10 @@ class TweetService {
       tag.tweets.push(tweet.id);
       tag.save();
     });
+    return tweet;
+  }
+  async get(tweetId) {
+    const tweet = await this.tweetRepository.getWithComments(tweetId);
     return tweet;
   }
 }
